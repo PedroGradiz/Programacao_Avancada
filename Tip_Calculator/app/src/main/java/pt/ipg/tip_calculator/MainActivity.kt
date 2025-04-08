@@ -109,7 +109,7 @@ fun EditNumberField(value: String, onValueChange: (String) -> Unit, modifier: Mo
 
 
 //esta funçao serve para calcular a gorjeta de uma conta. por padrão ela tem uma gorjeta de 15%
-private fun calculateTip(amount: Double, tipPercent: Double = 15.0): String {
+fun calculateTip(amount: Double, tipPercent: Double = 15.0): String {
     val tip = tipPercent / 100 * amount
     return NumberFormat.getCurrencyInstance().format(tip)
 }
