@@ -7,22 +7,23 @@
     android:layout_height="match_parent"
     android:background="@drawable/imagem1"
     android:orientation="vertical"
-    android:padding="26dp"
+    android:padding="16dp"
     tools:context=".MainActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margintop="330dp"
         android:orientation="vertical"
+        android:layout_margintop="430dp"
         android:padding="10dp">
 
         <TextView
             android:id="@+id/questionText"
-            android:layout_width="363dp"
-            android:layout_height="42dp"
+            android:layout_width="346dp"
+            android:layout_height="223dp"
             android:layout_marginBottom="12dp"
-            android:padding="2dp"
+            android:padding="40dp"
             android:text="Questão\nquestion"
             android:textAlignment="center"
             android:textColor="@color/pink"
@@ -34,10 +35,10 @@
             android:id="@+id/option1Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="2dp"
             android:text="option1"
-            android:textSize="16sp" />
+            android:textSize="26sp" />
 
         <Button
             android:id="@+id/option2Button"
@@ -56,13 +57,23 @@
             android:layout_marginBottom="8dp"
             android:text="option3"
             android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/option4Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="option4"
+            android:textSize="16sp" />
+
     </LinearLayout>
 
     <Button
         android:id="@+id/restartButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="-100dp"
+        android:layout_margin="20dp"
         android:backgroundTint="@color/pink"
         android:enabled="false"
         android:padding="10dp"
@@ -74,4 +85,3 @@
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
