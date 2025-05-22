@@ -13,9 +13,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="685dp"
         android:layout_margintop="430dp"
+        android:orientation="vertical"
         android:padding="10dp">
 
         <TextView
@@ -23,7 +23,7 @@
             android:layout_width="346dp"
             android:layout_height="223dp"
             android:layout_marginBottom="12dp"
-            android:padding="40dp"
+            android:padding="60dp"
             android:text="Questão\nquestion"
             android:textAlignment="center"
             android:textColor="@color/pink"
@@ -35,10 +35,10 @@
             android:id="@+id/option1Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginTop="86dp"
+            android:layout_marginBottom="33dp"
             android:text="option1"
-            android:textSize="26sp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/option2Button"
@@ -53,7 +53,7 @@
             android:id="@+id/option3Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="33dp"
             android:layout_marginBottom="8dp"
             android:text="option3"
             android:textSize="16sp" />
@@ -62,7 +62,7 @@
             android:id="@+id/option4Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="33dp"
             android:layout_marginBottom="8dp"
             android:text="option4"
             android:textSize="16sp" />
@@ -72,7 +72,7 @@
     <Button
         android:id="@+id/restartButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="84dp"
         android:layout_margin="20dp"
         android:backgroundTint="@color/pink"
         android:enabled="false"
