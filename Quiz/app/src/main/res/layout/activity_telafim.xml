@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -7,21 +8,36 @@
     android:background="@drawable/telafim"
     android:padding="16dp"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".telaStart">
+    tools:context=".TelaFim">
+
+    <TextView
+        android:id="@+id/scoreTextView"
+        android:layout_width="328dp"
+        android:layout_height="101dp"
+        android:gravity="center"
+        android:text="Você acertou X de Y perguntas!"
+        android:textColor="@color/white"
+        android:textSize="29sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/startButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.866" />
 
     <Button
         android:id="@+id/startButton"
         android:layout_width="176dp"
         android:layout_height="54dp"
+        android:layout_marginBottom="164dp"
         android:backgroundTint="@color/white"
-        android:enabled="true"
         android:text="Restart Quiz"
         android:textColor="@color/Blue"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.787" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+

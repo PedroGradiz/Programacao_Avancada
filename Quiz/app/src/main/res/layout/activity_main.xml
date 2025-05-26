@@ -12,9 +12,9 @@
 
     <TextView
         android:id="@+id/questionText"
-        android:layout_width="425dp"
-        android:layout_height="183dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="372dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="80dp"
         android:padding="24dp"
         android:text="Questão\nquestion"
         android:textAlignment="center"
@@ -22,6 +22,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.846"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,18 +76,19 @@
         android:layout_marginHorizontal="32dp"/>
 
     <Button
-        android:id="@+id/restartButton"
+        android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="54dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/pink"
-        android:enabled="false"
-        android:text="Restart Quiz"
+        android:visibility="gone"
+        android:text="Seguinte"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/option4Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

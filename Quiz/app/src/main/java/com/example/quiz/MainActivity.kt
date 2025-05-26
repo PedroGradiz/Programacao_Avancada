@@ -1,8 +1,9 @@
 package com.example.quiz
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.quiz.databinding.ActivityMainBinding
 
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         arrayOf("A) def minhaFuncao() {}", "B) fun minhaFuncao() {}", "C) function minhaFuncao() {}", "D) void minhaFuncao() {}")
     )
 
-    private val correctAnswers = arrayOf(2, 3, 1) // base 0
+    private val correctAnswers = arrayOf(2, 3, 1) // índice base 0
     private var currentQuestionIndex = 0
     private var score = 0
 
@@ -37,38 +38,16 @@ class MainActivity : AppCompatActivity() {
         binding.option2Button.setOnClickListener { checkAnswer(1) }
         binding.option3Button.setOnClickListener { checkAnswer(2) }
         binding.option4Button.setOnClickListener { checkAnswer(3) }
-        binding.restartButton.setOnClickListener { restartQuiz() }
-    }
 
-    private fun correctButtonColors(buttonIndex: Int) {
-        when (buttonIndex) {
-            0 -> binding.option1Button.setBackgroundColor(Color.GREEN)
-            1 -> binding.option2Button.setBackgroundColor(Color.GREEN)
-            2 -> binding.option3Button.setBackgroundColor(Color.GREEN)
-            3 -> binding.option4Button.setBackgroundColor(Color.GREEN)
+        binding.nextButton.setOnClickListener {
+            if (currentQuestionIndex < questionTexts.size - 1) {
+                currentQuestionIndex++
+                displayQuestion()
+                setButtonsEnabled(true)
+            } else {
+                goToTelaFim()
+            }
         }
-    }
-
-    private fun wrongButtonColors(buttonIndex: Int) {
-        when (buttonIndex) {
-            0 -> binding.option1Button.setBackgroundColor(Color.RED)
-            1 -> binding.option2Button.setBackgroundColor(Color.RED)
-            2 -> binding.option3Button.setBackgroundColor(Color.RED)
-            3 -> binding.option4Button.setBackgroundColor(Color.RED)
-        }
-    }
-
-    private fun resetButtonColors() {
-        val color = Color.rgb(50, 59, 96)
-        binding.option1Button.setBackgroundColor(color)
-        binding.option2Button.setBackgroundColor(color)
-        binding.option3Button.setBackgroundColor(color)
-        binding.option4Button.setBackgroundColor(color)
-    }
-
-    private fun showResults() {
-        Toast.makeText(this, "Your score: $score out of ${questionTexts.size}", Toast.LENGTH_LONG).show()
-        binding.restartButton.isEnabled = true
     }
 
     private fun displayQuestion() {
@@ -77,32 +56,56 @@ class MainActivity : AppCompatActivity() {
         binding.option2Button.text = questionOptions[currentQuestionIndex][1]
         binding.option3Button.text = questionOptions[currentQuestionIndex][2]
         binding.option4Button.text = questionOptions[currentQuestionIndex][3]
+
         resetButtonColors()
+        binding.nextButton.visibility = View.GONE
     }
 
     private fun checkAnswer(selectedAnswerIndex: Int) {
         val correctAnswerIndex = correctAnswers[currentQuestionIndex]
 
+        setButtonsEnabled(false)
+
         if (selectedAnswerIndex == correctAnswerIndex) {
             score++
-            correctButtonColors(selectedAnswerIndex)
+            setButtonColor(selectedAnswerIndex, Color.GREEN)
         } else {
-            wrongButtonColors(selectedAnswerIndex)
-            correctButtonColors(correctAnswerIndex)
+            setButtonColor(selectedAnswerIndex, Color.RED)
+            setButtonColor(correctAnswerIndex, Color.GREEN)
         }
 
-        if (currentQuestionIndex < questionTexts.size - 1) {
-            currentQuestionIndex++
-            binding.questionText.postDelayed({ displayQuestion() }, 1000)
-        } else {
-            showResults()
+        binding.nextButton.visibility = View.VISIBLE
+    }
+
+    private fun setButtonColor(index: Int, color: Int) {
+        when (index) {
+            0 -> binding.option1Button.setBackgroundColor(color)
+            1 -> binding.option2Button.setBackgroundColor(color)
+            2 -> binding.option3Button.setBackgroundColor(color)
+            3 -> binding.option4Button.setBackgroundColor(color)
         }
     }
 
-    private fun restartQuiz() {
-        currentQuestionIndex = 0
-        score = 0
-        displayQuestion()
-        binding.restartButton.isEnabled = false
+    private fun resetButtonColors() {
+        val defaultColor = Color.rgb(50, 59, 96)
+        binding.option1Button.setBackgroundColor(defaultColor)
+        binding.option2Button.setBackgroundColor(defaultColor)
+        binding.option3Button.setBackgroundColor(defaultColor)
+        binding.option4Button.setBackgroundColor(defaultColor)
+    }
+
+    private fun setButtonsEnabled(enabled: Boolean) {
+        binding.option1Button.isEnabled = enabled
+        binding.option2Button.isEnabled = enabled
+        binding.option3Button.isEnabled = enabled
+        binding.option4Button.isEnabled = enabled
+    }
+
+    private fun goToTelaFim() {
+        val intent = Intent(this, TelaFim::class.java)
+        intent.putExtra("score", score)
+        intent.putExtra("total", questionTexts.size)
+        startActivity(intent)
+        finish()
     }
 }
