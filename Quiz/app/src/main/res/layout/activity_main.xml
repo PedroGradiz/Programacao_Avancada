@@ -14,7 +14,7 @@
         android:id="@+id/questionText"
         android:layout_width="372dp"
         android:layout_height="170dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="76dp"
         android:padding="24dp"
         android:text="Questão\nquestion"
         android:textAlignment="center"
@@ -22,7 +22,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -11,19 +11,13 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private val questionTexts = arrayOf(
-        "1. Qual é a principal vantagem do Kotlin em relação ao Java para desenvolvimento Android?",
-        "2. Qual palavra-chave é usada para declarar uma variável imutável em Kotlin?",
-        "3. Como se declara uma função em Kotlin?"
+    data class Pergunta(
+        val texto: String,
+        val opcoesEmbaralhadas: List<String>,
+        val indiceCorreto: Int
     )
 
-    private val questionOptions = arrayOf(
-        arrayOf("A) É mais lento que o Java", "B) Não é compatível com bibliotecas Java", "C) Sintaxe mais concisa e segura", "D) Requer hardware específico"),
-        arrayOf("A) var", "B) const", "C) final", "D) val"),
-        arrayOf("A) def minhaFuncao() {}", "B) fun minhaFuncao() {}", "C) function minhaFuncao() {}", "D) void minhaFuncao() {}")
-    )
-
-    private val correctAnswers = arrayOf(2, 3, 1) // índice base 0
+    private lateinit var perguntas: List<Pergunta>
     private var currentQuestionIndex = 0
     private var score = 0
 
@@ -31,6 +25,49 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Banco de 10 perguntas
+        val perguntasOriginais = listOf(
+            Triple("Qual é a principal vantagem do Kotlin em relação ao Java para desenvolvimento Android?",
+                listOf("É mais lento que o Java", "Não é compatível com bibliotecas Java", "Sintaxe mais concisa e segura", "Requer hardware específico"), 2),
+
+            Triple("Qual palavra-chave é usada para declarar uma variável imutável em Kotlin?",
+                listOf("var", "const", "final", "val"), 3),
+
+            Triple("Como se declara uma função em Kotlin?",
+                listOf("def minhaFuncao() {}", "fun minhaFuncao() {}", "function minhaFuncao() {}", "void minhaFuncao() {}"), 1),
+
+            Triple("Qual estrutura de controle substitui o switch do Java em Kotlin?",
+                listOf("switch", "when", "choose", "select"), 1),
+
+            Triple("Qual é o tipo padrão para números inteiros em Kotlin?",
+                listOf("Int", "Long", "Byte", "Float"), 0),
+
+            Triple("Qual dessas não é uma função de escopo em Kotlin?",
+                listOf("let", "apply", "also", "fetch"), 3),
+
+            Triple("Como declarar uma lista mutável em Kotlin?",
+                listOf("listOf()", "arrayListOf()", "mutableListOf()", "setOf()"), 2),
+
+            Triple("O que o operador '!!' faz em Kotlin?",
+                listOf("Declara uma variável", "Garante não null, ou lança exceção", "Converte para Boolean", "Define como nulo"), 1),
+
+            Triple("Qual função converte string para inteiro em Kotlin?",
+                listOf("toInt()", "parseInt()", "toInteger()", "intValue()"), 0),
+
+            Triple("O que significa 'val nome: String?' em Kotlin?",
+                listOf("nome nunca pode ser nulo", "nome pode ser nulo", "nome é mutável", "nome é constante"), 1)
+        )
+
+        // Selecionar 5 perguntas aleatórias e embaralhar suas opções
+        perguntas = perguntasOriginais.shuffled().take(5).map { (texto, opcoes, indiceCorretoOriginal) ->
+            val opcoesComIndice = opcoes.mapIndexed { i, opcao -> Pair(i, opcao) }
+            val opcoesEmbaralhadasComIndices = opcoesComIndice.shuffled()
+            val novasOpcoes = opcoesEmbaralhadasComIndices.map { it.second }
+            val novoIndiceCorreto = opcoesEmbaralhadasComIndices.indexOfFirst { it.first == indiceCorretoOriginal }
+
+            Pergunta(texto, novasOpcoes, novoIndiceCorreto)
+        }
 
         displayQuestion()
 
@@ -40,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         binding.option4Button.setOnClickListener { checkAnswer(3) }
 
         binding.nextButton.setOnClickListener {
-            if (currentQuestionIndex < questionTexts.size - 1) {
+            if (currentQuestionIndex < perguntas.size - 1) {
                 currentQuestionIndex++
                 displayQuestion()
                 setButtonsEnabled(true)
@@ -51,18 +88,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayQuestion() {
-        binding.questionText.text = questionTexts[currentQuestionIndex]
-        binding.option1Button.text = questionOptions[currentQuestionIndex][0]
-        binding.option2Button.text = questionOptions[currentQuestionIndex][1]
-        binding.option3Button.text = questionOptions[currentQuestionIndex][2]
-        binding.option4Button.text = questionOptions[currentQuestionIndex][3]
+        val perguntaAtual = perguntas[currentQuestionIndex]
+        binding.questionText.text = perguntaAtual.texto
+        binding.option1Button.text = perguntaAtual.opcoesEmbaralhadas[0]
+        binding.option2Button.text = perguntaAtual.opcoesEmbaralhadas[1]
+        binding.option3Button.text = perguntaAtual.opcoesEmbaralhadas[2]
+        binding.option4Button.text = perguntaAtual.opcoesEmbaralhadas[3]
 
         resetButtonColors()
         binding.nextButton.visibility = View.GONE
     }
 
     private fun checkAnswer(selectedAnswerIndex: Int) {
-        val correctAnswerIndex = correctAnswers[currentQuestionIndex]
+        val correctAnswerIndex = perguntas[currentQuestionIndex].indiceCorreto
 
         setButtonsEnabled(false)
 
@@ -104,7 +142,7 @@ class MainActivity : AppCompatActivity() {
     private fun goToTelaFim() {
         val intent = Intent(this, TelaFim::class.java)
         intent.putExtra("score", score)
-        intent.putExtra("total", questionTexts.size)
+        intent.putExtra("total", perguntas.size)
         startActivity(intent)
         finish()
     }
