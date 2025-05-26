@@ -4,18 +4,18 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/telaStart"
+    android:background="@drawable/telafim"
     android:padding="16dp"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".telaStart">
 
     <Button
         android:id="@+id/startButton"
-        android:layout_width="283dp"
-        android:layout_height="55dp"
+        android:layout_width="176dp"
+        android:layout_height="54dp"
         android:backgroundTint="@color/white"
         android:enabled="true"
-        android:text="Start Quiz"
+        android:text="Restart Quiz"
         android:textColor="@color/Blue"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,5 +23,5 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.833" />
+        app:layout_constraintVertical_bias="0.787" />
 </androidx.constraintlayout.widget.ConstraintLayout>
