@@ -1,28 +1,37 @@
 package com.example.quiz
 
-import android.content.Intent
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.example.quiz.databinding.ActivityTelafimBinding  // <-- note aqui
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
-class TelaFim : AppCompatActivity() {
-
-    private lateinit var binding: ActivityTelafimBinding   // <-- e aqui
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityTelafimBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        val score = intent.getIntExtra("score", 0)
-        val total = intent.getIntExtra("total", 0)
-
-        binding.scoreTextView.text = "Você acertou $score de $total perguntas!"
-
-        binding.startButton.setOnClickListener {
-            val intent = Intent(this, TelaStart::class.java)
-            startActivity(intent)
-            finish()
+@Composable
+fun Telafim(navController: NavController, score: Int) {
+    Scaffold { padding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .padding(20.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Parabéns! Terminaste o quiz com pontuação: $score",
+                style = MaterialTheme.typography.headlineMedium
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(onClick = {
+                navController.navigate("start") {
+                    popUpTo("start") { inclusive = true }
+                }
+            }) {
+                Text("Recomeçar")
+            }
         }
     }
 }
+

@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Tema base usando Material 3 -->
+    <style name="Base.Theme.Quiz" parent="Theme.Material3.DayNight">
+        <!-- Personaliza a cor de fundo da status bar -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/navyBlue</item>
+        <!-- Define a cor primária e de contraste -->
+        <item name="colorPrimary">@color/navyBlue</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
+    <!-- Tema principal da app -->
+    <style name="Theme.Quiz" parent="Base.Theme.Quiz" />
+</resources>

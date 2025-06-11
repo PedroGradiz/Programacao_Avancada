@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Tema base do Material3 -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Tema base da aplicação usando Material3 -->
     <style name="Theme.Quiz" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Cores primárias, secundárias, etc -->
         <item name="colorPrimary">@color/navyBlue</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="android:statusBarColor">@color/navyBlue</item>
     </style>
-    <style name="Theme.ProjetoFinal" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
