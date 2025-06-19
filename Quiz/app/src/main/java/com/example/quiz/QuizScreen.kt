@@ -67,7 +67,7 @@ fun QuizScreen(navController: NavController) {
         )
     )
 
-    // Selecionar 5 perguntas aleatórias e embaralhar as opções de cada uma
+    // Selecionar 5 perguntas aleatórias
     val perguntasAleatorias = remember {
         todasPerguntas.shuffled().take(5).map { pergunta ->
             val opcoesEmbaralhadas = pergunta.opcoes.shuffled()

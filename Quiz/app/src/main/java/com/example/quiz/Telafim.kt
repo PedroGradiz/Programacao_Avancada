@@ -7,7 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.compose.ui.text.style.TextAlign   // <--- este importa o TextAlign
+import androidx.compose.ui.text.style.TextAlign
 
 @Composable
 fun Telafim(navController: NavController, score: Int) {
@@ -17,13 +17,13 @@ fun Telafim(navController: NavController, score: Int) {
                 .fillMaxSize()
                 .padding(padding)
                 .padding(20.dp),
-            verticalArrangement = Arrangement.Center,   // verticalmente ao centro
-            horizontalAlignment = Alignment.CenterHorizontally // horizontalmente ao centro
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
                 text = "Parabéns! Terminaste o quiz!\nPontuação: $score de 5 perguntas",
-                style = MaterialTheme.typography.headlineLarge, // texto maior
-                textAlign = TextAlign.Center // centralizar o texto
+                style = MaterialTheme.typography.headlineLarge,
+                textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = {
