@@ -10,10 +10,11 @@ import androidx.navigation.NavController
 import androidx.compose.runtime.LaunchedEffect
 
 data class Pergunta(val pergunta: String, val opcoes: List<String>, val respostaCerta: Int)
+// Composable que apresenta 5 perguntas aleatórias e calcula a pontuação, navegando no fim para o ecrã final.
 
 @Composable
 fun QuizScreen(navController: NavController) {
-    // Lista original das perguntas
+
     val todasPerguntas = listOf(
         Pergunta(
             "Qual é a principal vantagem do Kotlin em relação ao Java para desenvolvimento Android?",

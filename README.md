@@ -37,4 +37,7 @@ Este é um projeto de aplicação Android desenvolvido em **Kotlin** com **Jetpa
 ## 👨‍💻 Autor
 
 Projeto desenvolvido no âmbito da disciplina de **Programação Avançada**.
+Estudante: Pedro Gradiz
+Número: 1706786
+
 

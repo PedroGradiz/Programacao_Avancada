@@ -9,6 +9,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.compose.ui.text.style.TextAlign
 
+// Ecrã final que mostra a pontuação e permite recomeçar o quiz desde o início.
+
 @Composable
 fun Telafim(navController: NavController, score: Int) {
     Scaffold { padding ->

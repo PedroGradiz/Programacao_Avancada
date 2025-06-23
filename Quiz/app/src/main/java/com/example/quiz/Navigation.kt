@@ -8,6 +8,8 @@ import androidx.navigation.navArgument
 import androidx.navigation.NavType
 
 @Composable
+// Define a navegação entre ecrãs (start, quiz e fim) usando o NavController com argumentos opcionais.
+
 fun Navigation(navController: NavHostController) {
     NavHost(navController = navController, startDestination = "start") {
         composable("start") { TelaStart(navController) }

@@ -8,6 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
+// Ecrã inicial do quiz com botão para começar e navegar para o ecrã de perguntas.
+
 @Composable
 fun TelaStart(navController: NavController) {
     Scaffold { padding ->
@@ -19,7 +21,7 @@ fun TelaStart(navController: NavController) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Bem-vindo ao Quiz!", style = MaterialTheme.typography.headlineMedium)
+            Text("Bem-vindo ao Quiz de Kotlin! ", style = MaterialTheme.typography.headlineMedium)
             Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = { navController.navigate("quiz") }) {
                 Text("Começar")
