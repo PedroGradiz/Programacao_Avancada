@@ -21,7 +21,7 @@ fun Telafim(navController: NavController, score: Int) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Parabéns! Terminaste o quiz!\nPontuação: $score de 5 perguntas",
+                text = "Parabéns!\n Terminaste o quiz!\nPontuação: $score de 5 perguntas.",
                 style = MaterialTheme.typography.headlineLarge,
                 textAlign = TextAlign.Center
             )
